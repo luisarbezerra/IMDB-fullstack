@@ -7,12 +7,12 @@
 
 # Execução do Backend
 ```bash
-./bin/run_api.py
+./bin/run_api.sh
 ```
 
 # Execução do Frontend
 ```bash
-./bin/run_api.py
+./bin/run_api.sh
 ```
 Abra http://localhost:3000 para visualização no browser.
 
