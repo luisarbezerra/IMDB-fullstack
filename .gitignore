@@ -1,0 +1,6 @@
+api/venv
+api/data/*
+ui/node_modules/
+ui/npm-debug.log*
+*.swp
+*__pycache__*
