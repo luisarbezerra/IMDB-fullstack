@@ -16,6 +16,11 @@
 ```
 Abra http://localhost:3000 para visualização no browser.
 
+# Carregamento do Banco de Dados
+```bash
+./bin/load_csv.sh
+```
+
 # Stack
 * Backend: Python e Flask.
 * Banco de dados: sqlite, com SQLAlchemy como ORM e Alembic para a migração.
