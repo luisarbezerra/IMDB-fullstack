@@ -13,6 +13,8 @@ virtualenv -p python3 venv
 source venv/bin/activate
 pip3 install -r requirements.txt
 mkdir data
+FLASK_APP=runapi.py flask db init
+FLASK_APP=runapi.py flask db migrate
 FLASK_APP=runapi.py flask db upgrade
 deactivate
 popd

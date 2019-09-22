@@ -5,6 +5,11 @@
 ./bin/install.sh
 ```
 
+# Carregamento do Banco de Dados
+```bash
+./bin/load_csv.sh
+```
+
 # Execução do Backend
 ```bash
 ./bin/run_api.sh
@@ -16,10 +21,6 @@
 ```
 Abra http://localhost:3000 para visualização no browser.
 
-# Carregamento do Banco de Dados
-```bash
-./bin/load_csv.sh
-```
 
 # Stack
 * Backend: Python e Flask.
