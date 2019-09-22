@@ -1,5 +1,6 @@
 api/venv
-api/data/*
+api/data
+api/migrations
 ui/node_modules/
 ui/.pnp
 ui/.pnp.js

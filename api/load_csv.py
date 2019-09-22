@@ -11,11 +11,12 @@ def load_csv(filename):
 
   movies = pd.read_csv(filename, encoding='utf-8')
   for index, row in movies.iterrows():
-    item_exists = Movie.query.filter(Movie.movie_title.contains(unicodedata.normalize('NFKC', row['movie_title']))).first()
+    movie_title_parse = unicodedata.normalize('NFKC', row['movie_title']).rstrip().replace(" ", "_")
+    item_exists = Movie.query.filter(Movie.movie_title.contains(movie_title_parse)).first()
 
     if item_exists is None:
       movie = {
-        'movie_title':     unicodedata.normalize('NFKC', row['movie_title']),
+        'movie_title':     movie_title_parse,
         'director_name':   row['director_name'],
         'genres':          row['genres'],
         'plot_keywords':   row['plot_keywords'],
