@@ -37,10 +37,20 @@ movie_fields = {
 
 class AllMoviesResource(Resource):
 
-    def get(self):
+    def get(self, page_num):
         get_args = request.args.to_dict()
-        movies = Movie.query.filter(Movie.movie_title.contains(get_args['substring'])).paginate(page=int(get_args['page_num']), error_out=True, max_per_page=20).items
+        movies = Movie.query
 
+        if 'substring' in get_args:
+            movies = movies.filter(Movie.movie_title.contains(get_args['substring']))
+        if 'year' in get_args:
+            movies = movies.filter(Movie.title_year.contains(int(get_args['year'])))
+        if 'genre' in get_args:
+            movies = movies.filter(Movie.genres.contains(get_args['genres']))
+        if 'language' in get_args:
+            movies = movies.filter(Movie.language.contains(get_args['language']))
+        
+        movies = movies.paginate(page=page_num, error_out=True, max_per_page=20).items
         return marshal({'movies': movies}, movies_fields)
 
 

@@ -82,11 +82,11 @@ export function fetchFilmsError(error) {
     }
 }
 
-export function fetchFilms() {
+export function fetchFilms(page_num, filters = {}) {
     return async function (dispatch) {
         try {
             dispatch(fetchingFilms())
-            const url = `${baseUrl}/movies`;
+            const url = buildUrl(page_num, filters);
 
             let response = await fetch(url)
             const json = await response.json();
@@ -216,4 +216,12 @@ export function fetchLanguages() {
             dispatch(fetchLanguagesError(error));
         }
     }
+}
+
+function buildUrl(page_num, {substring, year, genre, language}){
+    return `${baseUrl}/movies/${page_num}?` + toQueryString({substring, year, genre, language})
+}
+
+function toQueryString(object) {
+    return Object.keys(object).map(key => (key && object[key]) ? `${encodeURIComponent(key)}=${encodeURIComponent(object[key])}` : '').join('&');
 }
