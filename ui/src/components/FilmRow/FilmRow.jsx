@@ -5,9 +5,8 @@ import './FilmRow.scss';
 export default class FilmRow extends React.Component {
 
     render() {
-        debugger
         return (
-            <div className="film-row">
+            <div className="film-row"> {this.props.film.movie_title}
             </div>
         );
     }

@@ -219,7 +219,7 @@ export function fetchLanguages() {
 }
 
 function buildUrl(page_num, {substring, year, genre, language}){
-    return `${baseUrl}/movies/${page_num}?` + toQueryString({substring, year, genre, language})
+    return `${baseUrl}movies/${page_num}?` + toQueryString({substring, year, genre, language})
 }
 
 function toQueryString(object) {

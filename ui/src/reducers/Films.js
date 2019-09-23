@@ -1,4 +1,5 @@
 const initialState = {
+    page_num:  1,
     film:      null,
     films:     null,
     genres:    null,

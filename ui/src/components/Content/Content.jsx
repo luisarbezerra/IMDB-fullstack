@@ -5,13 +5,12 @@ import FilmRow from '../FilmRow'
 
 export default class Content extends React.Component {
     componentDidMount () {
-        this.props.fetchFilms();
+        this.props.fetchFilms(this.props.page_num);
     }
 
 
     renderFilmRow = (film) => {
-        return <div>{film.movie_title}</div>
-        // return <FilmRow key={film.movie_title} film={film}/>
+        return <FilmRow key={film.movie_title} film={film}/>
     }
 
 
