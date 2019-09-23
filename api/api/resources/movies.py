@@ -1,9 +1,8 @@
 from flask import request
 from flask_restful import Resource, marshal, fields
-import unicodedata
 from ..models.movie import Movie
 
-all_movies_fields = {
+all_movie_fields = {
     'movie_title':      fields.String,
     'director_name':    fields.String,
     'genres':           fields.String,
@@ -11,12 +10,12 @@ all_movies_fields = {
 }
 
 
-all_movies_fields = {
-    'movies': fields.List(fields.Nested(all_movies_fields))
+movies_fields = {
+    'movies': fields.List(fields.Nested(all_movie_fields))
 }
 
 
-movie_fields = {
+single_movie_fields = {
     'movie_title':      fields.String,
     'director_name':    fields.String,
     'duration':         fields.String,
@@ -31,7 +30,7 @@ movie_fields = {
 
 
 movie_fields = {
-    'movie': fields.List(fields.Nested(movie_fields))
+    'movie': fields.List(fields.Nested(single_movie_fields))
 }
 
 
@@ -39,7 +38,7 @@ class AllMoviesResource(Resource):
 
     def get(self):
         movies = Movie.query.all()
-        return marshal({'movies': movies}, all_movies_fields)
+        return marshal({'movies': movies}, movies_fields)
 
 
 class MovieResource(Resource):
