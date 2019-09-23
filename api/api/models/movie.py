@@ -11,5 +11,5 @@ class Movie(db.Model):
     movie_imdb_link         = db.Column(db.String(256))
     language                = db.Column(db.String(256))
     country                 = db.Column(db.String(256))
-    title_year              = db.Column(db.String(256))
+    title_year              = db.Column(db.Integer)
     imdb_score              = db.Column(db.Float)

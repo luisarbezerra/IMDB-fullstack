@@ -5,7 +5,8 @@ from ..models.movie import Movie
 all_movie_fields = {
     'movie_title':      fields.String,
     'genres':           fields.String,
-    'title_year ':      fields.String,
+    'title_year':       fields.Integer,
+    'language':         fields.String,
     'imdb_score':       fields.Float
 }
 
@@ -24,7 +25,7 @@ single_movie_fields = {
     'movie_imdb_link':  fields.String,
     'language':         fields.String,
     'country':          fields.String,
-    'title_year ':      fields.String,
+    'title_year':       fields.String,
     'imdb_score':       fields.Float
 }
 
@@ -37,7 +38,7 @@ movie_fields = {
 class AllMoviesResource(Resource):
 
     def get(self):
-        movies = Movie.query.all()
+        movies = Movie.query.order_by(Movie.movie_title).all()
         return marshal({'movies': movies}, movies_fields)
 
 

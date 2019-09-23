@@ -21,14 +21,17 @@ default_config = {
 
 
 def _add_resources(api):
-    from .resources.movies import AllMoviesResource, MovieResource
-    from .resources.genres import GenresResource
+    from .resources.movies    import AllMoviesResource, MovieResource
+    from .resources.genres    import GenresResource
+    from .resources.languages import LanguagesResource
+    from .resources.years     import YearsResource
 
 
     api.add_resource(AllMoviesResource, '/movies')
     api.add_resource(MovieResource,     '/movie/<string:movie_title>')
     api.add_resource(GenresResource,    '/genres')
-
+    api.add_resource(LanguagesResource, '/languages')
+    api.add_resource(YearsResource,     '/years')
 
 def create_app(wsgi=False, collect_transactions=True):
     global api
