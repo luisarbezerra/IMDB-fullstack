@@ -6,6 +6,7 @@ ui/.pnp
 ui/.pnp.js
 ui/coverage
 ui/build
+ui/package-lock.json
 ui/.DS_Store
 ui/.env.local
 ui/.env.development.local

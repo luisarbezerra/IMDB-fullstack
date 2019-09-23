@@ -27,7 +27,7 @@ def _add_resources(api):
     from .resources.years     import YearsResource
 
 
-    api.add_resource(AllMoviesResource, '/movies')
+    api.add_resource(AllMoviesResource, '/movies/<int:page_num>')
     api.add_resource(MovieResource,     '/movie/<string:movie_title>')
     api.add_resource(GenresResource,    '/genres')
     api.add_resource(LanguagesResource, '/languages')

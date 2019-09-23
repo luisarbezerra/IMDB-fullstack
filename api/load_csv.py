@@ -9,7 +9,7 @@ from api.db           import db
 
 def load_csv(filename):
 
-  movies = pd.read_csv(filename, encoding='utf-8')
+  movies = pd.read_csv(filename, encoding='utf-8').sort_values(by=['movie_title'])
   for index, row in movies.iterrows():
     movie_title_parse = unicodedata.normalize('NFKC', row['movie_title']).rstrip().replace(" ", "_")
     item_exists = Movie.query.filter(Movie.movie_title.contains(movie_title_parse)).first()

@@ -37,8 +37,9 @@ movie_fields = {
 
 class AllMoviesResource(Resource):
 
-    def get(self):
-        movies = Movie.query.order_by(Movie.movie_title).all()
+    def get(self, page_num):
+        movies = Movie.query.paginate(page=page_num, error_out=True, max_per_page=20).items
+        # import pdb;pdb.set_trace()
         return marshal({'movies': movies}, movies_fields)
 
 
