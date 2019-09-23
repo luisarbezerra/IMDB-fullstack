@@ -4,9 +4,9 @@ from ..models.movie import Movie
 
 all_movie_fields = {
     'movie_title':      fields.String,
-    'director_name':    fields.String,
     'genres':           fields.String,
     'title_year ':      fields.String,
+    'imdb_score':       fields.Float
 }
 
 
