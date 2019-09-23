@@ -37,9 +37,10 @@ movie_fields = {
 
 class AllMoviesResource(Resource):
 
-    def get(self, page_num):
-        movies = Movie.query.paginate(page=page_num, error_out=True, max_per_page=20).items
-        # import pdb;pdb.set_trace()
+    def get(self):
+        get_args = request.args.to_dict()
+        movies = Movie.query.filter(Movie.movie_title.contains(get_args['substring'])).paginate(page=int(get_args['page_num']), error_out=True, max_per_page=20).items
+
         return marshal({'movies': movies}, movies_fields)
 
 
