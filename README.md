@@ -15,9 +15,10 @@
 ./bin/run_api.sh
 ```
 
+E, paralelamente:
 # Execução do Frontend
 ```bash
-./bin/run_api.sh
+./bin/run_ui.sh
 ```
 Abra http://localhost:3000 para visualização no browser.
 
