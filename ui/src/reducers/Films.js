@@ -51,6 +51,8 @@ export const films = (state = initialState, { type, payload }) => {
         return { ...state, page_num: payload }
     case 'PREV_PAGE':
         return { ...state, page_num: payload }
+    case 'FIRST_PAGE':
+        return { ...state, page_num: 1 }
 
     default:
         return state;

@@ -18,4 +18,5 @@ class LanguagesResource(Resource):
                     continue
                 else:
                     all_languages.append(movie.language)
+        all_languages.sort()
         return marshal({'languages': all_languages}, languages_fields)

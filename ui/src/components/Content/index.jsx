@@ -6,7 +6,8 @@ import {
     fetchGenres,
     fetchLanguages,
     nextPage,
-    prevPage
+    prevPage,
+    firstPage
 } from '../../actions/Films'
 import { 
     showModal, 
@@ -42,6 +43,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         prevPage: (page_num) => {
             dispatch(prevPage(page_num));
+        },
+        firstPage: () => {
+            dispatch(firstPage());
         },
     }
 }

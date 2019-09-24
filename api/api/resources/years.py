@@ -18,4 +18,5 @@ class YearsResource(Resource):
                     continue
                 else:
                     all_years.append(movie.title_year)
+        all_years.sort()
         return marshal({'years': all_years}, years_fields)

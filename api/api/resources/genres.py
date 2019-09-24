@@ -18,4 +18,5 @@ class GenresResource(Resource):
                     continue
                 else:
                     all_genres.append(genre)
+        all_genres.sort()
         return marshal({'genres': all_genres}, genres_fields)

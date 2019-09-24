@@ -25,7 +25,14 @@ export const FETCH_LANGUAGES_ERROR   = 'FETCH_LANGUAGES_ERROR'
 
 export const NEXT_PAGE               = 'NEXT_PAGE'
 export const PREV_PAGE               = 'PREV_PAGE'
+export const FIRST_PAGE              = 'FIRST_PAGE'
 
+
+export function firstPage() {
+    return {
+        type:    FIRST_PAGE,
+    }
+}
 
 export function nextPage(page) {
     return {
