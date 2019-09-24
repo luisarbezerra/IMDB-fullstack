@@ -11,6 +11,7 @@ export default class Content extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            substring: '',
             genre: '',
             year: '',
             language: '', 
@@ -46,7 +47,7 @@ export default class Content extends React.Component {
         if(this.props.films.movies.length === 15 && !this.props.fetching) {
             let num = this.props.page_num
             this.props.nextPage(this.props.page_num);
-            this.props.fetchFilms(num+1, {genre:this.state.genre, year:this.state.year, language:this.state.language})
+            this.props.fetchFilms(num+1, {substring:this.state.substring, genre:this.state.genre, year:this.state.year, language:this.state.language})
         };
     }
 
@@ -54,19 +55,23 @@ export default class Content extends React.Component {
         if (this.props.page_num >= 2 && !this.props.fetching) {
             let num = this.props.page_num
             this.props.prevPage(this.props.page_num);
-            this.props.fetchFilms(num-1, {genre:this.state.genre, year:this.state.year, language:this.state.language});
+            this.props.fetchFilms(num-1, {substring:this.state.substring, genre:this.state.genre, year:this.state.year, language:this.state.language});
         }
     }
 
     handleFilterAllClick = (type) => {
         this.props.firstPage()
-        this.setState({[type]: []},() => this.props.fetchFilms(this.props.page_num, {genre:this.state.genre, year:this.state.year, language:this.state.language}))
+        this.setState({[type]: []},() => this.props.fetchFilms(this.props.page_num, {substring:this.state.substring, genre:this.state.genre, year:this.state.year, language:this.state.language}))
     }
 
 
     handleFilterClick = (type, filter) => {
-        this.setState({[type]: filter}, () => this.props.fetchFilms(this.props.page_num, {genre:this.state.genre, year:this.state.year, language:this.state.language}))     
+        this.setState({[type]: filter}, () => this.props.fetchFilms(this.props.page_num, {substring:this.state.substring, genre:this.state.genre, year:this.state.year, language:this.state.language}))     
         
+    }
+
+    handleChange = (event) => {
+        this.setState({'substring': event.target.value}, () => this.props.fetchFilms(this.props.page_num, {substring:this.state.substring, genre:this.state.genre, year:this.state.year, language:this.state.language}));
     }
 
 
@@ -76,7 +81,12 @@ export default class Content extends React.Component {
 
                 <Form>
                     <Form.Group controlId="search-movie">
-                        <Form.Control type="text" placeholder="Digite o Nome do Filme..." />
+                        <Form.Control 
+                            type="text"
+                            value={this.state.substring}
+                            onChange={this.handleChange}
+                            placeholder="Digite o Nome do Filme..." 
+                        />
                     </Form.Group>
                 </Form>
 
