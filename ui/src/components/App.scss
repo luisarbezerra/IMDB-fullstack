@@ -1,17 +1,15 @@
 @import '../assets/sass/globals.scss';
 
 body {
-    background-color: $background-color;
     color: $font-color;
-    font-size: 14px;
     width: 100%;
   }
   
 html,
 body,
 #root {
+  background-color: $background-color;
   height: 100%;
   width: 100%;
   margin: 0;
-  position: relative;
 }

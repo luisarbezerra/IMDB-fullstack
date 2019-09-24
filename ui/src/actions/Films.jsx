@@ -47,7 +47,7 @@ export function fetchSingleFilm(movie_title) {
     return async function (dispatch) {
         try {
             dispatch(fetchingSingleFilm())
-            const url = `${baseUrl}/movie/${movie_title}`;
+            const url = `${baseUrl}movie/${movie_title.replace(/#/g, "hashreplaced")}`;
 
             let response = await fetch(url)
             const json = await response.json();
@@ -125,7 +125,7 @@ export function fetchGenres() {
     return async function (dispatch) {
         try {
             dispatch(fetchingGenres())
-            const url = `${baseUrl}/genres`;
+            const url = `${baseUrl}genres`;
 
             let response = await fetch(url)
             const json = await response.json();
@@ -164,7 +164,7 @@ export function fetchYears() {
     return async function (dispatch) {
         try {
             dispatch(fetchingYears())
-            const url = `${baseUrl}/years`;
+            const url = `${baseUrl}years`;
 
             let response = await fetch(url)
             const json = await response.json();
@@ -203,7 +203,7 @@ export function fetchLanguages() {
     return async function (dispatch) {
         try {
             dispatch(fetchingLanguages())
-            const url = `${baseUrl}/languages`;
+            const url = `${baseUrl}languages`;
 
             let response = await fetch(url)
             const json = await response.json();

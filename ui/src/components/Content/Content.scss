@@ -4,5 +4,18 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    margin: 40px 0;
+    margin: 2% 10%;
+
+    .filters {
+        display: flex;
+        justify-content: center;
+        
+        .filter {
+            padding: 0 10px;
+        }
+    }
+
+    .film-list {
+        margin-top: 10px;
+    }
 }

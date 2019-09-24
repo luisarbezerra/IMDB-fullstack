@@ -31,7 +31,7 @@ single_movie_fields = {
 
 
 movie_fields = {
-    'movie': fields.List(fields.Nested(single_movie_fields))
+    'movie': fields.Nested(single_movie_fields)
 }
 
 
@@ -50,12 +50,14 @@ class AllMoviesResource(Resource):
         if 'language' in get_args:
             movies = movies.filter(Movie.language.contains(get_args['language']))
         
-        movies = movies.paginate(page=page_num, error_out=True, max_per_page=20).items
+        movies = movies.paginate(page=page_num, error_out=True, max_per_page=15).items
         return marshal({'movies': movies}, movies_fields)
 
 
 class MovieResource(Resource):
 
     def get(self, movie_title):
+        if 'hashreplaced' in movie_title:
+            movie_title = movie_title.replace("hashreplaced", "#")
         movie = Movie.query.filter_by(movie_title=movie_title).first()
         return marshal({'movie': movie}, movie_fields)
