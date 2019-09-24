@@ -61,7 +61,7 @@ export default class Content extends React.Component {
 
     handleFilterAllClick = (type) => {
         this.props.firstPage()
-        this.setState({[type]: []},() => this.props.fetchFilms(this.props.page_num, {substring:this.state.substring, genre:this.state.genre, year:this.state.year, language:this.state.language}))
+        this.setState({[type]: ''},() => this.props.fetchFilms(this.props.page_num, {substring:this.state.substring, genre:this.state.genre, year:this.state.year, language:this.state.language}))
     }
 
 
@@ -91,17 +91,17 @@ export default class Content extends React.Component {
                 </Form>
 
                 <div className='filters'>
-                    <DropdownButton id="dropdown1" className="filter" title="Gêneros">
+                    <DropdownButton id="dropdown1" className="filter" title={this.state.genre !== ''? this.state.genre:"Gêneros"}>
                         <Dropdown.Item href="" onSelect={() => this.handleFilterAllClick('genre')}>All</Dropdown.Item>
                         {this.props.genres !== null && this.renderFilters('genre', this.props.genres.genres)}
                     </DropdownButton>
 
-                    <DropdownButton id="dropdown2" className="filter" title="Anos">
+                    <DropdownButton id="dropdown2" className="filter" title={this.state.year !== ''? this.state.year:"Anos"}>
                         <Dropdown.Item href="" onSelect={() => this.handleFilterAllClick('year')}>All</Dropdown.Item>
                         {this.props.years !== null && this.renderFilters('year', this.props.years.years)}
                     </DropdownButton>
 
-                    <DropdownButton id="dropdown3" className="filter" title="Linguagem">
+                    <DropdownButton id="dropdown3" className="filter" title={this.state.language !== ''? this.state.language:"Linguagens"}>
                         <Dropdown.Item href="" onSelect={() => this.handleFilterAllClick('language')}>All</Dropdown.Item>
                         {this.props.languages !== null && this.renderFilters('language', this.props.languages.languages)}
                     </DropdownButton>
@@ -114,6 +114,7 @@ export default class Content extends React.Component {
 
                 <div className='buttons-pag'>
                     <Button className='button-pag' onClick={() => this.pagePrev()}>‹</Button>
+                    <Button className='button-pag' disabled>{this.props.page_num}</Button>
                     <Button className='button-pag' onClick={() => this.pageNext()}>›</Button>
                 </div>
 
