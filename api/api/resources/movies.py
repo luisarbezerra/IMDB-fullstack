@@ -50,7 +50,7 @@ class AllMoviesResource(Resource):
         if 'language' in get_args:
             movies = movies.filter(Movie.language.contains(get_args['language']))
         
-        movies = movies.paginate(page=page_num, error_out=True, max_per_page=15).items
+        movies = movies.paginate(page=page_num, error_out=False, max_per_page=15).items
         return marshal({'movies': movies}, movies_fields)
 
 

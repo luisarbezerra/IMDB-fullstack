@@ -5,6 +5,8 @@ import {
     fetchYears,
     fetchGenres,
     fetchLanguages,
+    nextPage,
+    prevPage
 } from '../../actions/Films'
 import { 
     showModal, 
@@ -13,6 +15,7 @@ import {
 const mapStateToProps = (state) => {
     return {
         films:     state.films.films,
+        fetching:  state.films.fetching,
         page_num:  state.films.page_num,
         years:     state.films.years,
         genres:    state.films.genres,
@@ -33,7 +36,13 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(fetchYears());
             dispatch(fetchGenres());
             dispatch(fetchLanguages());
-        }
+        },
+        nextPage: (page_num) => {
+            dispatch(nextPage(page_num));
+        },
+        prevPage: (page_num) => {
+            dispatch(prevPage(page_num));
+        },
     }
 }
 

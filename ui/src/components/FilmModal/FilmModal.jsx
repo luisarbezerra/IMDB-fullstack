@@ -12,6 +12,7 @@ export default class FilmModal extends React.Component  {
     parseCategories(category) {
         return category.replace(/\|/g, ", ")
     }
+    
     renderFilmInfo () {
         const film = this.props.modal_info.movie
         return(

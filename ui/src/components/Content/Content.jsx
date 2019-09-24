@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListGroup, Form, Dropdown, DropdownButton } from 'react-bootstrap'
+import { ListGroup, Form, Dropdown, DropdownButton, Button } from 'react-bootstrap'
 import FilmModal from '../FilmModal'
 
 import './Content.scss';
@@ -7,6 +7,7 @@ import './Content.scss';
 import FilmRow from '../FilmRow'
 
 export default class Content extends React.Component {
+
     componentDidMount () {
         this.props.fetchFilms(this.props.page_num);
         this.props.fetchFilters();
@@ -28,8 +29,25 @@ export default class Content extends React.Component {
         return <Dropdown.Item href="" onClick={this.handleFilterClick}>{filter}</Dropdown.Item>
     }
 
+
     renderFilters = (filter) => {
         return filter.map(this.renderFilter)
+    }
+
+    pageNext = () => {
+        if(this.props.films.movies !== {} && !this.props.fetching) {
+            let num = this.props.page_num
+            this.props.nextPage(this.props.page_num);
+            this.props.fetchFilms(num+1)
+        };
+    }
+
+    pagePrev = () => {
+        if (this.props.page_num >= 2 && !this.props.fetching) {
+            let num = this.props.page_num
+            this.props.prevPage(this.props.page_num);
+            this.props.fetchFilms(num-1);
+        }
     }
 
     render() {
@@ -63,6 +81,12 @@ export default class Content extends React.Component {
                     { this.props.films !== null && this.renderFilmRows() }
                 </ListGroup>
                 <FilmModal />
+
+                <div className='buttons-pag'>
+                    <Button className='button-pag' onClick={() => this.pagePrev()}>‹</Button>
+                    <Button className='button-pag' onClick={() => this.pageNext()}>›</Button>
+                </div>
+
             </div>
         );
     }

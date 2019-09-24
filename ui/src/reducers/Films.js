@@ -47,6 +47,11 @@ export const films = (state = initialState, { type, payload }) => {
     case 'FETCH_LANGUAGES_ERROR':
         return { ...state, error:  payload, fetching: false }
 
+    case 'NEXT_PAGE':
+        return { ...state, page_num: payload }
+    case 'PREV_PAGE':
+        return { ...state, page_num: payload }
+
     default:
         return state;
   }

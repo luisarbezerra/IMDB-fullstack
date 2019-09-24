@@ -23,6 +23,24 @@ export const FETCHING_LANGUAGES      = 'FETCHING_LANGUAGES'
 export const FETCHED_LANGUAGES       = 'FETCHED_LANGUAGES'
 export const FETCH_LANGUAGES_ERROR   = 'FETCH_LANGUAGES_ERROR'
 
+export const NEXT_PAGE               = 'NEXT_PAGE'
+export const PREV_PAGE               = 'PREV_PAGE'
+
+
+export function nextPage(page) {
+    return {
+        type:    NEXT_PAGE,
+        payload: page+1
+    }
+}
+
+export function prevPage(page) {
+    return {
+        type: PREV_PAGE,
+        payload: page-1
+    }
+}
+
 export function fetchingSingleFilm() {
     return {
         type:    'FETCHING_SINGLE_FILM'
