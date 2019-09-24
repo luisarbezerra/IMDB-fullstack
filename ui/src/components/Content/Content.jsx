@@ -9,6 +9,7 @@ import FilmRow from '../FilmRow'
 export default class Content extends React.Component {
     componentDidMount () {
         this.props.fetchFilms(this.props.page_num);
+        this.props.fetchFilters();
     }
 
 
@@ -21,7 +22,15 @@ export default class Content extends React.Component {
         const films = this.props.films.movies;
         return films.map(this.renderFilmRow);
     }
-    
+
+
+    renderFilter = (filter) => {
+        return <Dropdown.Item href="" onClick={this.handleFilterClick}>{filter}</Dropdown.Item>
+    }
+
+    renderFilters = (filter) => {
+        return filter.map(this.renderFilter)
+    }
 
     render() {
         return (
@@ -35,15 +44,18 @@ export default class Content extends React.Component {
 
                 <div className='filters'>
                     <DropdownButton id="dropdown1" className="filter" title="Gêneros">
-                        <Dropdown.Item href="#/action-1" onClick={this.handleFilterClick}>Action</Dropdown.Item>
+                        <Dropdown.Item href="" onClick={this.handleFilterAllClick}>All</Dropdown.Item>
+                        {this.props.genres !== null && this.renderFilters(this.props.genres.genres)}
                     </DropdownButton>
 
                     <DropdownButton id="dropdown2" className="filter" title="Anos">
-                        <Dropdown.Item href="#/action-1" onClick={this.handleFilterClick}>Action</Dropdown.Item>
+                        <Dropdown.Item href="" onClick={this.handleFilterAllClick}>All</Dropdown.Item>
+                        {this.props.years !== null && this.renderFilters(this.props.years.years)}
                     </DropdownButton>
 
                     <DropdownButton id="dropdown3" className="filter" title="Linguagem">
-                        <Dropdown.Item href="#/action-1" onClick={this.handleFilterClick}>Action</Dropdown.Item>
+                        <Dropdown.Item href="" onClick={this.handleFilterAllClick}>All</Dropdown.Item>
+                        {this.props.languages !== null && this.renderFilters(this.props.languages.languages)}
                     </DropdownButton>
                 </div>
 
