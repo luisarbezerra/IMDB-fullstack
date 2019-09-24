@@ -42,7 +42,7 @@ class AllMoviesResource(Resource):
         movies = Movie.query
 
         if 'substring' in get_args:
-            movies = movies.filter(Movie.movie_title.contains(get_args['substring']))
+            movies = movies.filter(Movie.movie_title.contains(get_args['substring'].replace(" ", "_")))
         if 'year' in get_args and get_args['year'] != '':
             movies = movies.filter(Movie.title_year.contains(int(get_args['year'])))
         if 'genre' in get_args:

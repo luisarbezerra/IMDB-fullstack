@@ -35,7 +35,7 @@ export default class Content extends React.Component {
 
 
     renderFilter = (type, filter) => {
-        return <Dropdown.Item href="" onSelect={() => this.handleFilterClick(type, filter)}>{filter}</Dropdown.Item>
+        return <Dropdown.Item key={filter} href="" onSelect={() => this.handleFilterClick(type, filter)}>{filter}</Dropdown.Item>
     }
 
 
